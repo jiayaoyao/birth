@@ -1,4 +1,4 @@
-# vj
+# vj 2017.11.9 彤哥加入
 
 > A Vue.js project
 
