@@ -1,5 +1,5 @@
 <template>
-  <draggable :options="dragOptions" element="div" class="drag-handle">
+  <draggable :options="dragOptions" element="div" class="drag-handle" @start="isDragging=true" @end="isDragging=false" @move="onMove" @clone="onClone">
       <slot></slot>
   </draggable>
 </template>
@@ -10,19 +10,41 @@ export default {
   name: "drag",
   data() {
     return {
-        abc:"abc"
+        isDragging:false
     };
   },
   methods: {
-    
+    startDrag(event) {
+      this.isDragging=true;
+      console.log(isDragging);
+    },
+    endDrag(event) {
+      this.isDragging=false;
+      console.log(isDragging);
+    },
+    onMove (evt, originalEvent) {
+        evt.dragged; // dragged HTMLElement
+        evt.draggedRect; // TextRectangle {left, top, right и bottom}
+        evt.related; // HTMLElement on which have guided
+        evt.relatedRect; // TextRectangle
+        originalEvent.clientY; // mouse position
+        // return false; — for cancel
+    },
+    onClone (evt) {
+      var origEl = evt.item;
+      var cloneEl = evt.clone;
+    }
   },
   computed: {
     dragOptions() {
       return {
-        group: { name: "ctrl", pull: "clone", put: true },
+        group: { name: "ctrl", pull: "clone", put: false },
         animation: 0,
         disabled: false,
-        handle: ".drag-handle"
+        handle: ".drag-handle",
+        forceFallback: true,
+        fallbackClass: "sortable-fallback"
+        //draggable: ".view"
       };
     }
   },

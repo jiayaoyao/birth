@@ -1,11 +1,12 @@
 <template>
     <div class="main-right" >
-        <drag class="draggable-demo"></drag>
+        <draggable :options="dragOptions" element="div" class="draggable-demo" >
+        </draggable>
     </div>
 </template>
 
 <script>
-import drag from "./system/Drag";
+import draggable from "vuedraggable";
 export default {
   name: "demo",
   methods: {
@@ -14,13 +15,12 @@ export default {
     dragOptions() {
       return {
         group: { name: "ctrl", pull: true, put: true },
-        disabled: false,
-        animation: 0
+        handle: ".drag-handle"
       };
     }
   },
   components: {
-    drag
+    draggable
   }
 };
 </script>
@@ -41,5 +41,9 @@ export default {
   background-color: #fff;
   padding: 20px 30px;
   border: 1px solid blue;
+}
+.drag-handle {
+  cursor: move;
+  cursor: -webkit-grabbing;
 }
 </style>

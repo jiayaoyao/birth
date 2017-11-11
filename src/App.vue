@@ -34,4 +34,14 @@ main {
   border: solid 40px #e9ecf1;
   background-color: #fcfcfc;
 }
+
+.main-left .preview { display: block; }
+.main-left .view { display: none; }
+
+.main-right .preview { display: none; }
+.main-right .view { display: block; }
+
+.sortable-fallback .preview { display: none; }
+.sortable-fallback .view { display: block; }
+
 </style>

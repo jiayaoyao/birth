@@ -20,7 +20,7 @@
                   <el-menu-item index="1-5"><row cols="4,4,4,4,4,4"/></el-menu-item>
                   <el-menu-item index="1-6"><row cols="6,18"/></el-menu-item>
                   <el-menu-item index="1-7"><row cols="18,6"/></el-menu-item>
-                  <el-menu-item index="1-8"><row cols="24" /></el-menu-item>
+                  <el-menu-item index="1-8"><listtable /></el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
             
@@ -31,7 +31,7 @@
 
 <script>
 import row from "./Row";
-import draggable from "vuedraggable";
+import listtable from "./Table"
 export default {
   name: "controls",
   data() {
@@ -51,7 +51,7 @@ export default {
   },
   components: {
     row,
-    draggable
+    listtable
   }
 };
 </script>
